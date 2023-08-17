@@ -1,0 +1,15 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: sleep
+  namespace: default
+spec:
+  template:
+    spec:
+      containers:
+        - image: eu.gcr.io/colab-keep-alive/sleep:unchech
+          ports:
+            - containerPort: 8000
+    metadata:            
+      annotations:
+        autoscaling.knative.dev/target: "1"
